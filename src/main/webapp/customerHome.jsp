@@ -1,7 +1,14 @@
 <%@ page contentType="text/html; charset=ISO-8859-1" isELIgnored="false"%>
+<%
+  String empuname = (String) session.getAttribute("cname");
+  if(empuname == null) {
+    response.sendRedirect("customerLogin");
+  }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <title>XperienceAuto</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -1,11 +1,18 @@
 <%@ page contentType="text/html; charset=ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <%@page import="com.klef.jfsd.springboot.model.*"%>
-
+<%
+	Integer empuname = (Integer) session.getAttribute("cid");
+	String s = (String)session.getAttribute("cname");
+  if(empuname == null && s == null) {
+    response.sendRedirect("customerLogin");
+  }
+%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
 <title>XperienceAuto</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

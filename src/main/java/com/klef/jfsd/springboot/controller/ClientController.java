@@ -189,23 +189,21 @@ public class ClientController {
 	public ModelAndView customerSpare(HttpServletRequest request,@RequestParam(defaultValue = "1") int page) {
 		ModelAndView mv = new ModelAndView();
 		int itemsPerPage = 8;
-		HttpSession session = request.getSession();
-		int cid = (int) session.getAttribute("cid"); 
-	    String cname = (String) session.getAttribute("cname");
-	    mv.addObject("cid", cid);
-	    mv.addObject("cname", cname);
 		
 	    List<Product> pdata = sellerService.viewallproduct();
 		 int totalproducts = pdata.size();
 	     int totalPages = (int) Math.ceil((double) totalproducts / itemsPerPage);
-	     
 	     int startIndex = (page - 1) * itemsPerPage;
 	     int endIndex = Math.min(startIndex + itemsPerPage, totalproducts);
 	     List<Product> booksSubset = pdata.subList(startIndex, endIndex);
 	     mv.addObject("pdata", booksSubset); mv.addObject("currentPage", page);
 	     mv.addObject("totalPages", totalPages);
-		
 		mv.setViewName("customerSpare");
+		HttpSession session = request.getSession();
+		int cid = (int) session.getAttribute("cid"); 
+	    String cname = (String) session.getAttribute("cname");
+	    mv.addObject("cid", cid);
+	    mv.addObject("cname", cname);
 		return mv;
 	}
 
@@ -527,11 +525,15 @@ public class ClientController {
 	 }
 	
 	@GetMapping("cuslogout")
-    public ModelAndView cuslogout(HttpServletRequest request, HttpServletResponse response)
+    public String cuslogout(HttpServletRequest request, HttpServletResponse response)
     {
-		ModelAndView mv=new ModelAndView("customerLogin");
-	      mv.addObject("message", "Logout Successfully..!");
-	      return mv;
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+		    session.removeAttribute("cid");
+		    session.removeAttribute("cname");
+		    session.invalidate();
+		}
+	    return "redirect:/customerLogin";
     }
 	
 	@GetMapping("sellogout")
