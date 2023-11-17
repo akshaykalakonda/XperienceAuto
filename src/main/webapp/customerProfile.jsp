@@ -2,12 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<%
-  String empuname = (String) session.getAttribute("cname");
-  if(empuname == null) {
-    response.sendRedirect("customerLogin");
-  }
-%>
+
 <head>
 <title>XperienceAuto</title>
 <meta charset="utf-8">

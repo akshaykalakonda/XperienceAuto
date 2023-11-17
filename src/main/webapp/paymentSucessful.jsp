@@ -4,12 +4,6 @@
 <html lang="en">
 
 <head>
-<%
-  String empuname = (String) session.getAttribute("cname");
-  if(empuname == null) {
-    response.sendRedirect("customerLogin");
-  }
-%>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

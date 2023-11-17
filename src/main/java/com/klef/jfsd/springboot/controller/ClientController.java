@@ -202,6 +202,7 @@ public class ClientController {
 		HttpSession session = request.getSession();
 		int cid = (int) session.getAttribute("cid"); 
 	    String cname = (String) session.getAttribute("cname");
+	    
 	    mv.addObject("cid", cid);
 	    mv.addObject("cname", cname);
 		return mv;
@@ -525,15 +526,11 @@ public class ClientController {
 	 }
 	
 	@GetMapping("cuslogout")
-    public String cuslogout(HttpServletRequest request, HttpServletResponse response)
+    public ModelAndView cuslogout()
     {
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-		    session.removeAttribute("cid");
-		    session.removeAttribute("cname");
-		    session.invalidate();
-		}
-	    return "redirect:/customerLogin";
+		 ModelAndView mv=new ModelAndView("customerLogin");
+	      mv.addObject("message", "Logout Successfully..!");
+	      return mv;
     }
 	
 	@GetMapping("sellogout")

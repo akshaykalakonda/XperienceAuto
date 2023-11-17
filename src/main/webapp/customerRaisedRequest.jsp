@@ -4,12 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%
-  String empuname = (String) session.getAttribute("cname");
-  if(empuname == null) {
-    response.sendRedirect("customerLogin");
-  }
-%>
+
 <title>XperienceAuto</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

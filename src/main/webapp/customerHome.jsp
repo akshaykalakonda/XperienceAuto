@@ -1,10 +1,6 @@
 <%@ page contentType="text/html; charset=ISO-8859-1" isELIgnored="false"%>
-<%
-  String empuname = (String) session.getAttribute("cname");
-  if(empuname == null) {
-    response.sendRedirect("customerLogin");
-  }
-%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
