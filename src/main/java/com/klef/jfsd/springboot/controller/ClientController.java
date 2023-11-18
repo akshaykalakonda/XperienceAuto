@@ -531,7 +531,7 @@ public class ClientController {
     {
 		 ModelAndView mv=new ModelAndView("customerLogin");
 	      mv.addObject("message", "Logout Successfully..!");
-	    
+	      mv.addObject("msg","logout");
 	      return mv;
     }
 	
