@@ -525,11 +525,13 @@ public class ClientController {
 		 return mv;
 	 }
 	
+	// logout function
 	@GetMapping("cuslogout")
     public ModelAndView cuslogout()
     {
 		 ModelAndView mv=new ModelAndView("customerLogin");
 	      mv.addObject("message", "Logout Successfully..!");
+	      mv.addObject("msg","logout");
 	      return mv;
     }
 	
